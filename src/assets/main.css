@@ -2,8 +2,11 @@
     --white: #ffffff;
     --orange: #FFA500;
     --midGray: #B0B0B0;
+    --lightGray: #D3D3D3;
+    --darkGray: #A9A9A9;
     --yellow: #FFFF00;
-    --roundness: 0.5em;
+    --roundness: 0.4em;
+    --slider-max-width: 25em
 }
 
 body {

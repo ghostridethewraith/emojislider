@@ -4,8 +4,8 @@
     padding: 2rem 2rem 4rem;
     display: grid;
     justify-content: stretch;
-    width: 14%;
-    max-width: 37.5em;
+    width: 100%;
+    max-width: var(--slider-max-width);
     margin: auto;
 }
 
@@ -22,12 +22,16 @@
 
 #slider input:focus + .outer {
     box-shadow: 0 0 0 0.1em var(--white), 0 0 0 0.2em var(--orange);
+    transition: box-shadow 0.3s ease-in-out;
 }
 
 #slider > label {
     width: 100%;
     margin: auto;
     font-size: 1.5em;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    color: var(--darkGray);
     padding: 0 0 0.5em;
 }
 
@@ -38,12 +42,13 @@
     border-radius: var(--roundness);
     margin: auto;
     height: calc(var(--roundness));
-    background: var(--midGray);
+    background: linear-gradient(135deg, var(--midGray) 30%, var(--lightGray) 70%);
     display: flex;
     align-content: center;
     align-items: center;
     position: relative;
     z-index: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 #slider label.inner {
@@ -53,9 +58,9 @@
     background: var(--white);
     border-top-left-radius: var(--roundness);
     border-bottom-left-radius: var(--roundness);
-
-    transition: all linear;
+    transition: width 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), background-color 0.3s ease;
     transform-origin: left;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 #slider .emoji {
@@ -69,5 +74,8 @@
     transform: calc(var(--roundness));
     user-select: none;
     pointer-events: none;
+}
 
+#slider input:checked + .outer .emoji {
+    background-color: var(--orange);
 }

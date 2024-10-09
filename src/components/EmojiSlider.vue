@@ -9,9 +9,11 @@
              :style="{ width: `${val}%`, borderRadius: greaterThanFifty, background: getSliderBackground }"
              class="slider inner"
       ></label>
-      <span class="emoji" :style="{ transform: `translateX(${getPlacement})`, fontSize: `${fontSize}` }">
-        {{ getHappiness }}
+      <span class="emoji"
+            :style="{ transform: `translateX(${getPlacement}) scale(${getEmojiScale})`, fontSize: `${fontSize}` }">
+      {{ getHappiness }}
       </span>
+
     </div>
   </form>
 </template>
@@ -20,7 +22,7 @@
 export default {
   data() {
     return {
-      val: 70 // начальное значение слайдера
+      val: 0 // начальное значение слайдера
     };
   },
   mounted() {
@@ -28,7 +30,7 @@ export default {
   },
   computed: {
     getPlacement() {
-      return (this.val * 14.5) + '%';
+      return (this.val * 24.5) + '%';
     },
     greaterThanFifty() {
       return this.val > 50 ? 'var(--roundness)' : '0';
@@ -38,6 +40,10 @@ export default {
     },
     getSliderBackground() {
       return `linear-gradient(to right, var(--orange), ${(this.val * -1) + 125}%, var(--yellow))`;
+    },
+    getEmojiScale() {
+      // Масштаб эмодзи, например от 1 до 2
+      return 1 + (this.val / 75); // Эмодзи будет увеличиваться от 1 до 2 в зависимости от значения
     },
     getHappiness() {
       const moods = ["😔", "😟", "😐", "😊", "😁", "🥳", "😍", "🤩", "😎", "🥺"];
