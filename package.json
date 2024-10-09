@@ -8,10 +8,6 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "dependencies": {
-    "bootstrap": "^5.3.3",
-    "vue": "^3.4.29"
-  },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",
     "sass": "^1.79.4",
