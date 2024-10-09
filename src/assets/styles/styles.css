@@ -1,0 +1,73 @@
+@import url('src/assets/main.css');
+
+#slider {
+    padding: 2rem 2rem 4rem;
+    display: grid;
+    justify-content: stretch;
+    width: 14%;
+    max-width: 37.5em;
+    margin: auto;
+}
+
+#slider input {
+    grid-row: 2/3;
+    grid-column: 1/2;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    height: calc(var(--roundness));
+    cursor: pointer;
+}
+
+#slider input:focus + .outer {
+    box-shadow: 0 0 0 0.1em var(--white), 0 0 0 0.2em var(--orange);
+}
+
+#slider > label {
+    width: 100%;
+    margin: auto;
+    font-size: 1.5em;
+    padding: 0 0 0.5em;
+}
+
+#slider .outer {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+    width: 100%;
+    border-radius: var(--roundness);
+    margin: auto;
+    height: calc(var(--roundness));
+    background: var(--midGray);
+    display: flex;
+    align-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 0;
+}
+
+#slider label.inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--white);
+    border-top-left-radius: var(--roundness);
+    border-bottom-left-radius: var(--roundness);
+
+    transition: all linear;
+    transform-origin: left;
+}
+
+#slider .emoji {
+    margin-left: -0.2em;
+    display: flex;
+    width: 1em;
+    height: 1.5em;
+    transition: all 0.5s cubic-bezier(0.025, 0.01, 0.025, 1);
+    border-radius: var(--roundness);
+    text-align: right;
+    transform: calc(var(--roundness));
+    user-select: none;
+    pointer-events: none;
+
+}

@@ -1,0 +1,13 @@
+:root {
+    --white: #ffffff;
+    --orange: #FFA500;
+    --midGray: #B0B0B0;
+    --yellow: #FFFF00;
+    --roundness: 0.5em;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--white);
+    color: var(--white);
+}
