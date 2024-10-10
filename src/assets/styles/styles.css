@@ -21,7 +21,7 @@
 }
 
 #slider input:focus + .outer {
-    box-shadow: 0 0 0 0.1em var(--white), 0 0 0 0.2em var(--orange);
+    box-shadow: 0 0 0 0.1em var(--white), 0 0 0 0.2em var(--pink);
     transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -77,5 +77,19 @@
 }
 
 #slider input:checked + .outer .emoji {
-    background-color: var(--orange);
+    background-color: var(--pale-pink);
+}
+.emoji-container {
+    position: relative;
+    height: 30px; /* Высота контейнера для emoji, зависит от высоты окна */
+    margin-bottom: -10px; /* сдвинуть вниз для наложения на слайдер */
+}
+
+.emoji {
+    position: absolute;
+    transition: transform 0.2s ease;
+}
+
+.emoji.top {
+    top: -2.5rem; /* Сдвинуть верхний emoji вверх, адаптивно с использованием rem */
 }
