@@ -1,27 +1,29 @@
 <template>
+  <div id="logo-container">
+    <img :src="logo" alt="Logo" />
+  </div>
   <form id="slider" @submit.prevent>
     <label
         for="range"
         :style="{ color: getHappinessColor }">Чистота зала: {{ val }}%</label>
-    <input v-model.number="val" id="range" type="range" min="0" max="100">
+    <input v-model.number="val" id="range" type="range" min="0" max="100" @input="logVal">
     <div class="slider outer" aria-hidden="true">
       <label for="range"
              :style="{ width: `${val}%`, borderRadius: greaterThanFifty, background: getSliderBackground }"
              class="slider inner"
       ></label>
       <div class="emoji-container" @click="toggleTopEmoji">
-        <span class="emoji top" v-if="showTopEmoji" :style="{ fontSize: `${fontSize}` }">
+        <span class="emoji top" v-if="showTopEmoji">
           {{ getHappiness }} <!-- Верхний emoji -->
         </span>
         <span class="emoji"
-              :style="{ transform: `translateX(${getPlacement}) scale(${getEmojiScale})`, fontSize: `${fontSize}` }">
+              :style="{ transform: `translateX(${getPlacement}) scale(${getEmojiScale})`}">
           {{ getHappiness }} <!-- Нижний emoji -->
         </span>
       </div>
     </div>
   </form>
 
-  <!-- Повторите для второго слайдера -->
   <form id="slider" @submit.prevent>
     <label
         for="range"
@@ -33,18 +35,17 @@
              class="slider inner"
       ></label>
       <div class="emoji-container" @click="toggleTopEmoji1">
-        <span class="emoji top" v-if="showTopEmoji1" :style="{ fontSize: `${fontSize}` }">
+        <span class="emoji top" v-if="showTopEmoji1">
           {{ getHappiness1 }} <!-- Верхний emoji для второго слайдера -->
         </span>
         <span class="emoji"
-              :style="{ transform: `translateX(${getPlacement1}) scale(${getEmojiScale1})`, fontSize: `${fontSize}` }">
+              :style="{ transform: `translateX(${getPlacement1}) scale(${getEmojiScale1})`}">
           {{ getHappiness1 }} <!-- Нижний emoji для второго слайдера -->
         </span>
       </div>
     </div>
   </form>
 
-  <!-- Повторите для третьего слайдера -->
   <form id="slider" @submit.prevent>
     <label
         for="range"
@@ -56,19 +57,24 @@
              class="slider inner"
       ></label>
       <div class="emoji-container" @click="toggleTopEmoji2">
-        <span class="emoji top" v-if="showTopEmoji2" :style="{ fontSize: `${fontSize}` }">
+        <span class="emoji top" v-if="showTopEmoji2">
           {{ getHappiness2 }} <!-- Верхний emoji для третьего слайдера -->
         </span>
         <span class="emoji"
-              :style="{ transform: `translateX(${getPlacement2}) scale(${getEmojiScale2})`, fontSize: `${fontSize}` }">
+              :style="{ transform: `translateX(${getPlacement2}) scale(${getEmojiScale2})`}">
           {{ getHappiness2 }} <!-- Нижний emoji для третьего слайдера -->
         </span>
       </div>
     </div>
   </form>
+
+  <textarea id="myTextarea" name="myTextarea" placeholder="Оставьте комментарий..."></textarea>
+
+
 </template>
 
 <script>
+import logo from '@/components/icons/omg-coffee-logo.svg';
 export default {
   data() {
     return {
@@ -78,6 +84,7 @@ export default {
       showTopEmoji: false, // Состояние для видимости верхнего emoji первого слайдера
       showTopEmoji1: false, // Состояние для второго слайдера
       showTopEmoji2: false, // Состояние для третьего слайдера
+      logo,
     };
   },
   mounted() {
@@ -140,9 +147,11 @@ export default {
     getHappiness2() {
       return this.getMood(this.val2); // Новое вычисляемое свойство для val2
     }
-
   },
-  methods: {
+methods: {
+  logVal() {
+    console.log('Текущее значение val:', this.val);
+  },
   toggleTopEmoji() {
     this.showTopEmoji = !this.showTopEmoji; // Переключает видимость верхнего emoji первого слайдера
   },
@@ -191,6 +200,7 @@ export default {
 </script>
 
 <style scoped>
+
 @import '../assets/styles/styles.css';
 </style>
 
